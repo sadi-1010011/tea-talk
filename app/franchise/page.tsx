@@ -6,7 +6,7 @@ export default function FranchisePage() {
         {/* Hero Section */}
         <section className="relative h-[80vh] flex items-center justify-center text-center px-6 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-background-dark/60 via-background-dark/40 to-background-dark z-10" />
+            <div className="absolute inset-0 bg-linear-to-b from-background-dark/60 via-background-dark/40 to-background-dark z-10" />
             <img
               alt="Tea Talk Interior"
               className="w-full h-full object-cover"
@@ -127,7 +127,7 @@ export default function FranchisePage() {
               <div className="lg:w-2/3 w-full">
                 <div className="relative border-l-2 border-primary/30 ml-4 py-8">
                   <div className="mb-12 ml-10 relative">
-                    <span className="absolute -left-[53px] top-1 w-6 h-6 rounded-full bg-primary border-4 border-background-dark" />
+                    <span className="absolute -left-13.25 top-1 w-6 h-6 rounded-full bg-primary border-4 border-background-dark" />
                     <h4 className="text-lg font-bold">
                       The Flagship (Outlet 1)
                     </h4>
@@ -140,7 +140,7 @@ export default function FranchisePage() {
                     </p>
                   </div>
                   <div className="mb-12 ml-10 relative">
-                    <span className="absolute -left-[53px] top-1 w-6 h-6 rounded-full bg-primary/40 border-4 border-background-dark" />
+                    <span className="absolute -left-13.25 top-1 w-6 h-6 rounded-full bg-primary/40 border-4 border-background-dark" />
                     <h4 className="text-lg font-bold">
                       Scaling Phase (Outlets 2-5)
                     </h4>
@@ -153,7 +153,7 @@ export default function FranchisePage() {
                     </p>
                   </div>
                   <div className="mb-4 ml-10 relative">
-                    <span className="absolute -left-[53px] top-1 w-10 h-10 rounded-full bg-primary flex items-center justify-center -translate-x-2">
+                    <span className="absolute -left-13.25 top-1 w-10 h-10 rounded-full bg-primary flex items-center justify-center -translate-x-2">
                       <span className="material-symbols-outlined text-background-dark text-xl font-bold">
                         rocket_launch
                       </span>
@@ -253,7 +253,7 @@ export default function FranchisePage() {
                     Information
                   </span>
                 </div>
-                <div className="flex-1 h-[2px] bg-white/10 mt-5 mx-4" />
+                <div className="flex-1 h-0.5 bg-white/10 mt-5 mx-4" />
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center font-bold text-white/40">
                     2
@@ -262,7 +262,7 @@ export default function FranchisePage() {
                     Experience
                   </span>
                 </div>
-                <div className="flex-1 h-[2px] bg-white/10 mt-5 mx-4" />
+                <div className="flex-1 h-0.5 bg-white/10 mt-5 mx-4" />
                 <div className="flex flex-col items-center gap-2">
                   <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center font-bold text-white/40">
                     3

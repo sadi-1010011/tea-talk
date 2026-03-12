@@ -1,4 +1,4 @@
-import Script from "next/script";
+
 
 export default function OutletsPage() {
   return (
@@ -491,7 +491,8 @@ export default function OutletsPage() {
               </div>
             </div>
           </div>
-          <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-primary/10 to-transparent border border-primary/10">
+          
+          <div className="mt-20 p-8 rounded-2xl bg-linear-to-r from-primary/10 to-transparent border border-primary/10">
             <div className="flex flex-col md:flex-row items-center gap-10">
               <div className="flex-1">
                 <h2 className="text-3xl font-black mb-4">
@@ -535,11 +536,7 @@ export default function OutletsPage() {
             </div>
           </div>
         </main>
-        
-        <Script
-        src="https://cdn.tailwindcss.com?plugins=forms,container-queries" 
-        strategy="beforeInteractive" // This is the default strategy and loads the script after some hydration
-      />
+      
       </div>
     </div>
   );

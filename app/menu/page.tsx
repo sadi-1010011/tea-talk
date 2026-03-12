@@ -26,18 +26,18 @@ export default function MenuPage() {
               From hand-picked saffron to artisanal burgers.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-primary text-background-dark px-8 py-4 rounded-lg font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2">
+              <a href="#menu" className="bg-primary text-background-dark px-8 py-4 rounded-lg font-bold text-base hover:bg-primary/90 transition-all flex items-center gap-2">
                 Explore Menu{" "}
                 <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-              <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-base hover:bg-white/20 transition-all">
+              </a>
+              <a href="outlets" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-base hover:bg-white/20 transition-all">
                 Find Nearest Location
-              </button>
+              </a>
             </div>
           </div>
         </section>
         {/* Categorization Tabs */}
-        <div className="sticky top-[73px] z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+        <div className="sticky top-18.25 z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/10" id="menu">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex gap-10 overflow-x-auto no-scrollbar">
               <button className="py-5 border-b-2 border-primary text-primary font-bold text-sm whitespace-nowrap flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function MenuPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Saffron Tea Card */}
-              <div className="group relative aspect-[16/10] rounded-xl overflow-hidden amber-glow">
+              <div className="group relative aspect-16/10 rounded-xl overflow-hidden amber-glow">
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   data-alt="Traditional saffron tea with scattered threads of saffron"
@@ -83,7 +83,7 @@ export default function MenuPage() {
                       'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgTJko7M9wXIJRnw7CFXsPFcrlclqbj5QBsqM0FKODMgPekc9h58-zhGliHoyRsIT8jm3eZyeAYmvgvWbWD45mLVE5yY4HlDh1lwjPbWAuFo1dUr5pxziHtpGRpld5p0CMO5prTqcu12KD9lAQVGIB8zzAMKKvocWcDqJ6isv4aiNFNJjW14Hl3o1s2cly0J_77SdULWGvohmbRBbaUszBlly7slWqlCjrGFgb_sH8k7S9MvJpR04DRNf3HDNLGyT-ggkjWAd3IAOk")',
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-linear-to-t from-background-dark via-transparent to-transparent opacity-90" />
                 <div className="absolute bottom-0 left-0 p-8">
                   <h3 className="text-2xl font-bold text-white mb-2">
                     Signature Saffron Tea
@@ -105,7 +105,7 @@ export default function MenuPage() {
                 </div>
               </div>
               {/* Sulaimani Card */}
-              <div className="group relative aspect-[16/10] rounded-xl overflow-hidden">
+              <div className="group relative aspect-16/10 rounded-xl overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   data-alt="Clear tea with lemon and mint leaves"
@@ -114,7 +114,7 @@ export default function MenuPage() {
                       'url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3sSRGc_CM4k2KeISbSWfg9bBgJSOL62Nc5EUjGy_tdJNDaExqdbk_2rD3VaKv137S6r4ufSFjEljMq5WZkAz2Z3NjSHdQ3lF4aUtP_7DZP_8NUbmV0WNRrePd0RVMRe1ZWYY1-yU2Xjsi3o4RSzqmdzbKKI3b0wNy09IQ5wkE31SkpRvQCUUy0Wmf7UWAnI-IGYKQOsG4ackbcFkPfTuboY_4r2zXq6G3PPMTCVHi29ROzo37q4joN5p5yADDNIkIXiarwK3gcd7F")',
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-linear-to-t from-background-dark via-transparent to-transparent opacity-90" />
                 <div className="absolute bottom-0 left-0 p-8">
                   <h3 className="text-2xl font-bold text-white mb-2">
                     Traditional Sulaimani
@@ -184,7 +184,7 @@ export default function MenuPage() {
                       'linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCrQJCpI-4Nk6DifQo87K9ReNoznBT01_liI5lvZe5ejjfdZ9HEiG6n2uvT1Y5rjwxliRmuPuD8KXt1bbmpmwoGuiLFcMoT6npJ6vRpeXYXM3CbRzNC2sWj_-88rm8TZDKk2SJtaqOx0Nn74XWnyCGyolQfIFzLlWfVimIy-3kneZj-B0Y9Yrd0DbgFxoMjONpjLsm1IGZaaBZ_BtcdxVU7DM2DURBBLdYO8i--fgsHUY2YKENdPHLD6xdUUwWUg2fHyfOCdWWNy7yq")',
                   }}
                 />
-                <div className="relative h-full flex flex-col justify-end p-8 min-h-[400px]">
+                <div className="relative h-full flex flex-col justify-end p-8 min-h-100">
                   <span className="bg-primary text-background-dark w-fit px-3 py-1 rounded text-[10px] font-black uppercase mb-2">
                     Best Seller
                   </span>
