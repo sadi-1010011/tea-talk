@@ -43,7 +43,7 @@ export default function Home() {
                   data-alt="Steaming golden saffron tea being poured elegantly"
                   style={{
                     backgroundImage:
-                      'url("https://lh3.googleusercontent.com/p/AF1QipMsBiiEiIILIGuiD0aHIJzbfsrmvEHKD8XU5Ty1=s1360-w1360-h1020")',
+                      'url("hero.jpg")',
                   }}
                 />
                 <div className="absolute bottom-6 right-6 left-6 p-6 rounded-xl bg-background-dark/80 backdrop-blur-lg border border-white/10">
