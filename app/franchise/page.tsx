@@ -1,10 +1,93 @@
 "use client";
 
+import { useState } from "react";
 import BlurText from "@/animations/BlurText";
 import ScrollReveal, { ScrollRevealItem } from "@/animations/ScrollReveal";
 import SpotlightCard from "@/animations/SpotlightCard";
 
+const STEPS = [
+  { label: "Information", icon: "person" },
+  { label: "Experience", icon: "work" },
+  { label: "Location", icon: "location_on" },
+];
+
+const INPUT =
+  "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white";
+
 export default function FranchisePage() {
+  const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState<"next" | "back">("next");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    investmentRange: "₹50k - ₹100k",
+    yearsInBusiness: "",
+    industryBackground: "",
+    currentOccupation: "",
+    whyTeaTalk: "",
+    targetCity: "",
+    preferredArea: "",
+    propertyStatus: "Looking",
+    targetOpenDate: "",
+  });
+
+  function update(field: string, value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  }
+
+  function next() {
+    if (step < STEPS.length - 1) {
+      setDirection("next");
+      setStep((s) => s + 1);
+    }
+  }
+
+  function back() {
+    if (step > 0) {
+      setDirection("back");
+      setStep((s) => s - 1);
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+
+    const body = `
+Franchise Inquiry — Tea Talk
+
+Full Name: ${form.fullName}
+Email: ${form.email}
+Phone: ${form.phone}
+Investment Range: ${form.investmentRange}
+
+Years in Business: ${form.yearsInBusiness}
+Industry Background: ${form.industryBackground}
+Current Occupation: ${form.currentOccupation}
+Why Tea Talk: ${form.whyTeaTalk}
+
+Target City: ${form.targetCity}
+Preferred Area: ${form.preferredArea}
+Property Status: ${form.propertyStatus}
+Target Open Date: ${form.targetOpenDate}
+    `.trim();
+
+    const mailto = `mailto:hello@teatalk.com?subject=${encodeURIComponent(
+      `Franchise Inquiry from ${form.fullName}`
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+
+    // Show success state after a short delay
+    await new Promise((r) => setTimeout(r, 600));
+    setSubmitting(false);
+    setSubmitted(true);
+  }
+
   return (
     <div>
       <main className="flex-1">
@@ -58,7 +141,7 @@ export default function FranchisePage() {
             </ScrollReveal>
           </div>
         </section>
-        
+
         {/* Why Partner Section */}
         <section
           className="py-24 px-6 lg:px-20 bg-background-light dark:bg-background-dark"
@@ -134,6 +217,7 @@ export default function FranchisePage() {
             </ScrollReveal>
           </div>
         </section>
+
         {/* Growth Timeline */}
         <section className="py-24 px-6 lg:px-20 bg-forest/10" id="timeline">
           <div className="max-w-7xl mx-auto">
@@ -211,6 +295,7 @@ export default function FranchisePage() {
             </div>
           </div>
         </section>
+
         {/* Testimonials */}
         <section className="py-24 px-6 lg:px-20" id="testimonials">
           <div className="max-w-7xl mx-auto">
@@ -275,6 +360,7 @@ export default function FranchisePage() {
             </ScrollReveal>
           </div>
         </section>
+
         {/* Franchise Inquiry Suite */}
         <section
           className="py-24 px-6 lg:px-20 bg-forest text-white"
@@ -294,101 +380,284 @@ export default function FranchisePage() {
             </ScrollReveal>
             <ScrollReveal variant="slideUp" delay={0.2} duration={0.8}>
               <SpotlightCard spotlightColor="rgba(233, 219, 25, 0.2)">
-              <div className="bg-background-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
-                <div className="flex justify-between mb-12">
-                  <div className="flex flex-col items-center gap-2 group">
-                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center font-bold text-background-dark">
-                      1
-                    </div>
-                    <span className="text-[10px] uppercase font-bold text-primary tracking-tighter">
-                      Information
-                    </span>
+                <div className="bg-background-dark rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
+
+                  {/* ── Stepper ── */}
+                  <div className="flex justify-between w-full mb-12">
+                    {STEPS.map((s, i) => (
+                      <div key={s.label} className="flex flex-1 items-center">
+                        <div className="flex flex-col items-center gap-2">
+                          <div
+                            className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${i <= step
+                              ? "bg-primary text-background-dark scale-110"
+                              : "border-2 border-white/20 text-white/40"
+                              }`}
+                          >
+                            {i < step ? (
+                              <span className="material-symbols-outlined text-lg">check</span>
+                            ) : (
+                              i + 1
+                            )}
+                          </div>
+                          <span
+                            className={`text-[10px] uppercase font-bold tracking-tighter transition-colors duration-300 ${i <= step ? "text-primary" : "text-white/20"
+                              }`}
+                          >
+                            {s.label}
+                          </span>
+                        </div>
+                        {i < STEPS.length - 1 && (
+                          <div className="flex-1 h-0.5 mx-4 mt-[-18px] relative overflow-hidden">
+                            <div className="absolute inset-0 bg-white/10" />
+                            <div
+                              className="absolute inset-0 bg-primary transition-transform duration-500 origin-left"
+                              style={{
+                                transform: i < step ? "scaleX(1)" : "scaleX(0)",
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex-1 h-0.5 bg-white/10 mt-5 mx-4" />
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center font-bold text-white/40">
-                      2
+
+                  {/* ── Form ── */}
+                  <form onSubmit={handleSubmit}>
+                    <div className="relative overflow-hidden">
+                      {/* Sliding container */}
+                      <div
+                        className="flex transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(-${step * 100}%)` }}
+                      >
+
+                        {/* ─── Step 1 — Information ─── */}
+                        <div className="w-full shrink-0 space-y-6 px-1">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Full Name <span className="text-primary">*</span>
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="John Doe"
+                                type="text"
+                                required
+                                value={form.fullName}
+                                onChange={(e) => update("fullName", e.target.value)}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Email Address <span className="text-primary">*</span>
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="john@example.com"
+                                type="email"
+                                required
+                                value={form.email}
+                                onChange={(e) => update("email", e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Phone Number
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="+91 98765 43210"
+                                type="tel"
+                                value={form.phone}
+                                onChange={(e) => update("phone", e.target.value)}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Investment Range
+                              </label>
+                              <select
+                                className={INPUT + " appearance-none"}
+                                value={form.investmentRange}
+                                onChange={(e) => update("investmentRange", e.target.value)}
+                              >
+                                <option>₹50k - ₹100k</option>
+                                <option>₹100k - ₹250k</option>
+                                <option>₹250k+</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-300">
+                              Why Tea Talk?
+                            </label>
+                            <textarea
+                              className={INPUT + " h-32 resize-none"}
+                              placeholder="Tell us about your vision and what draws you to Tea Talk..."
+                              value={form.whyTeaTalk}
+                              onChange={(e) => update("whyTeaTalk", e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        {/* ─── Step 2 — Experience ─── */}
+                        <div className="w-full shrink-0 space-y-6 px-1">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Years in Business / Work
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="e.g. 5 years"
+                                type="text"
+                                value={form.yearsInBusiness}
+                                onChange={(e) => update("yearsInBusiness", e.target.value)}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Industry Background
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="e.g. F&B, Retail, IT"
+                                type="text"
+                                value={form.industryBackground}
+                                onChange={(e) => update("industryBackground", e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-300">
+                              Current Occupation
+                            </label>
+                            <input
+                              className={INPUT}
+                              placeholder="e.g. Business Owner, Software Engineer"
+                              type="text"
+                              value={form.currentOccupation}
+                              onChange={(e) => update("currentOccupation", e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        {/* ─── Step 3 — Location ─── */}
+                        <div className="w-full shrink-0 space-y-6 px-1">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Target City <span className="text-primary">*</span>
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="e.g. Mumbai, Delhi, Bangalore"
+                                type="text"
+                                required
+                                value={form.targetCity}
+                                onChange={(e) => update("targetCity", e.target.value)}
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Preferred Area / Locality
+                              </label>
+                              <input
+                                className={INPUT}
+                                placeholder="e.g. Koramangala, Connaught Place"
+                                type="text"
+                                value={form.preferredArea}
+                                onChange={(e) => update("preferredArea", e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Property Status
+                              </label>
+                              <select
+                                className={INPUT + " appearance-none"}
+                                value={form.propertyStatus}
+                                onChange={(e) => update("propertyStatus", e.target.value)}
+                              >
+                                <option>Looking</option>
+                                <option>Shortlisted a few</option>
+                                <option>Already have a space</option>
+                              </select>
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-slate-300">
+                                Target Opening Date
+                              </label>
+                              <input
+                                className={INPUT}
+                                type="date"
+                                value={form.targetOpenDate}
+                                onChange={(e) => update("targetOpenDate", e.target.value)}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-[10px] uppercase font-bold text-white/20 tracking-tighter">
-                      Experience
-                    </span>
-                  </div>
-                  <div className="flex-1 h-0.5 bg-white/10 mt-5 mx-4" />
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center font-bold text-white/40">
-                      3
+
+                    {/* ── Navigation Buttons ── */}
+                    <div className="flex items-center justify-between mt-10 gap-4">
+                      {step > 0 ? (
+                        <button
+                          type="button"
+                          onClick={back}
+                          className="flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 font-bold text-sm hover:bg-white/5 transition-colors"
+                        >
+                          <span className="material-symbols-outlined text-lg">arrow_back</span>
+                          Back
+                        </button>
+                      ) : (
+                        <div />
+                      )}
+
+                      {step < STEPS.length - 1 ? (
+                        <button
+                          type="button"
+                          onClick={next}
+                          className="flex items-center gap-2 bg-primary text-background-dark px-8 py-3 rounded-xl font-bold text-sm hover:brightness-110 shadow-lg shadow-primary/20 transition-all ml-auto"
+                        >
+                          Next
+                          <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          disabled={submitting || submitted}
+                          className="flex items-center gap-2 bg-primary text-background-dark px-8 py-3 rounded-xl font-black text-sm hover:brightness-110 shadow-lg shadow-primary/20 transition-all ml-auto disabled:opacity-60"
+                        >
+                          {submitting ? (
+                            <>
+                              <span className="inline-block w-5 h-5 border-2 border-background-dark/30 border-t-background-dark rounded-full animate-spin" />
+                              Sending…
+                            </>
+                          ) : submitted ? (
+                            <>
+                              <span className="material-symbols-outlined text-lg">check_circle</span>
+                              Sent!
+                            </>
+                          ) : (
+                            <>
+                              <span className="material-symbols-outlined text-lg">send</span>
+                              Submit Inquiry
+                            </>
+                          )}
+                        </button>
+                      )}
                     </div>
-                    <span className="text-[10px] uppercase font-bold text-white/20 tracking-tighter">
-                      Location
-                    </span>
-                  </div>
+
+                    <p className="text-center text-xs text-slate-500 mt-6">
+                      By clicking submit, you agree to our Franchise Privacy Policy.
+                    </p>
+                  </form>
                 </div>
-                <form action="#" className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-300">
-                        Full Name
-                      </label>
-                      <input
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white"
-                        placeholder="John Doe"
-                        type="text"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-300">
-                        Email Address
-                      </label>
-                      <input
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white"
-                        placeholder="john@example.com"
-                        type="email"
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-300">
-                        Investment Range
-                      </label>
-                      <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white appearance-none">
-                        <option>₹50k - ₹100k</option>
-                        <option>₹100k - ₹250k</option>
-                        <option>₹250k+</option>
-                      </select>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-300">
-                        Target City
-                      </label>
-                      <input
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white"
-                        placeholder="e.g. San Francisco"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-300">
-                      Why Tea Talk?
-                    </label>
-                    <textarea
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary text-white h-32"
-                      placeholder="Tell us about your vision..."
-                      defaultValue={""}
-                    />
-                  </div>
-                  <button
-                    className="w-full bg-primary text-background-dark py-4 rounded-xl font-black text-lg hover:brightness-110 shadow-lg shadow-primary/20 transition-all"
-                    type="submit"
-                  >
-                    Submit Inquiry
-                  </button>
-                  <p className="text-center text-xs text-slate-500">
-                    By clicking submit, you agree to our Franchise Privacy Policy.
-                  </p>
-                </form>
-              </div>
               </SpotlightCard>
             </ScrollReveal>
           </div>
@@ -397,3 +666,4 @@ export default function FranchisePage() {
     </div>
   );
 }
+

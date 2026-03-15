@@ -59,7 +59,7 @@ export default function MenuPage() {
           className="sticky top-18.25 z-40 bg-background-dark/90 backdrop-blur-md border-b border-primary/10"
           id="menu"
         >
-          <div className="max-w-7xl mx-auto px-6">
+          {/* <div className="max-w-7xl mx-auto px-6">
             <div className="flex gap-10 overflow-x-auto no-scrollbar">
               <button className="py-5 border-b-2 border-primary text-primary font-bold text-sm whitespace-nowrap flex items-center gap-2">
                 <span className="material-symbols-outlined">coffee</span> Teas
@@ -77,7 +77,7 @@ export default function MenuPage() {
                 Desserts
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* Content Grid */}
         <section className="max-w-7xl mx-auto px-6 py-16">
@@ -122,12 +122,12 @@ export default function MenuPage() {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-primary font-bold text-xl">
-                        $12.00
+                        ₹54.0
                       </span>
                       <button className="bg-primary/20 hover:bg-primary text-primary hover:text-background-dark p-2 rounded-lg transition-colors">
-                        <span className="material-symbols-outlined">
+                        {/* <span className="material-symbols-outlined">
                           add_shopping_cart
-                        </span>
+                        </span> */}
                       </button>
                     </div>
                   </div>
@@ -155,12 +155,12 @@ export default function MenuPage() {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-primary font-bold text-xl">
-                        $8.50
+                        ₹30.0
                       </span>
                       <button className="bg-primary/20 hover:bg-primary text-primary hover:text-background-dark p-2 rounded-lg transition-colors">
-                        <span className="material-symbols-outlined">
+                        {/* <span className="material-symbols-outlined">
                           add_shopping_cart
-                        </span>
+                        </span> */}
                       </button>
                     </div>
                   </div>
@@ -206,10 +206,10 @@ export default function MenuPage() {
                     glaze.
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-primary font-bold text-lg">$16.00</span>
-                    <button className="bg-primary text-background-dark px-4 py-1.5 rounded-lg text-sm font-bold">
+                    <span className="text-primary font-bold text-lg">₹16.00</span>
+                    {/* <button className="bg-primary text-background-dark px-4 py-1.5 rounded-lg text-sm font-bold">
                       Add
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </ScrollRevealItem>
@@ -237,11 +237,11 @@ export default function MenuPage() {
                     </p>
                     <div className="flex items-center gap-6">
                       <span className="text-primary font-black text-2xl">
-                        $24.99
+                        ₹24.99
                       </span>
-                      <button className="bg-white text-background-dark px-8 py-3 rounded-lg font-bold hover:bg-primary transition-colors">
+                      {/* <button className="bg-white text-background-dark px-8 py-3 rounded-lg font-bold hover:bg-primary transition-colors">
                         Order Combo
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

@@ -43,10 +43,10 @@ export default function OutletsPage() {
                 <span className="material-symbols-outlined text-lg">star</span>
                 Flagship
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-primary/10 rounded-lg font-semibold text-sm hover:bg-primary/20 transition-colors whitespace-nowrap">
+              {/* <button className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-primary/10 rounded-lg font-semibold text-sm hover:bg-primary/20 transition-colors whitespace-nowrap">
                 <span className="material-symbols-outlined text-lg">groups</span>
                 Group Friendly
-              </button>
+              </button> */}
               <button className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-primary/10 rounded-lg font-semibold text-sm hover:bg-primary/20 transition-colors whitespace-nowrap">
                 <span className="material-symbols-outlined text-lg">
                   schedule
@@ -100,7 +100,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -229,7 +229,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -355,7 +355,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -397,7 +397,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -442,7 +442,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>
@@ -484,7 +484,7 @@ export default function OutletsPage() {
                     </div>
                   </div>
                   <button className="w-full py-2 bg-slate-100 dark:bg-primary/20 hover:bg-primary hover:text-background-dark transition-all rounded-lg text-sm font-bold">
-                    Details
+                    Directions
                   </button>
                 </div>
               </div>

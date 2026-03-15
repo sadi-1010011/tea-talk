@@ -18,7 +18,7 @@ export default function Home() {
           speed={1}
         /> */}
 
-        <div style={{ width: "100%", height: "700px", position: "absolute" }}>
+        <div style={{ width: "100%", height: "700px", position: "absolute" }} className="hidden dark:block">
           <LightRays
             raysOrigin="top-center"
             raysColor="#aa7942"

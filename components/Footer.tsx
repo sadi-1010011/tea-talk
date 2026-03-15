@@ -64,9 +64,9 @@ export default function Footer() {
                 <a className="hover:text-primary transition-colors" href="outlets">
                   Outlets
                 </a>
-                {/* <a className="hover:text-primary transition-colors" href="menu">
+                <a className="hover:text-primary transition-colors" href="menu">
                   Menu
-                </a> */}
+                </a>
                 <a className="hover:text-primary transition-colors" href="franchise">
                   Franchise Info
                 </a>
